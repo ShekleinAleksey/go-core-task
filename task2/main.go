@@ -19,12 +19,11 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 func main() {
 	var originalSlice = make([]int, 0, 10)
-	rand.Seed(time.Now().UnixNano())
+
 	for i := 0; i < 10; i++ {
 		originalSlice = append(originalSlice, rand.Intn(100))
 	}
@@ -71,5 +70,8 @@ func removeElement(sliceForRemove []int, i int) []int {
 		return sliceForRemove
 	}
 
-	return append(sliceForRemove[:i-1], sliceForRemove[i:]...)
+	result := make([]int, 0, len(sliceForRemove)-1)
+	result = append(result, sliceForRemove[:i]...)
+	result = append(result, sliceForRemove[i+1:]...)
+	return result
 }

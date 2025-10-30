@@ -109,19 +109,19 @@ func TestRemoveElement(t *testing.T) {
 		{
 			name:     "удаление из середины",
 			input:    []int{1, 2, 3, 4, 5},
-			index:    3, // удаляем элемент с индексом 2
+			index:    2,
 			expected: []int{1, 2, 4, 5},
 		},
 		{
 			name:     "удаление первого элемента",
 			input:    []int{1, 2, 3},
-			index:    1, // удаляем элемент с индексом 0
+			index:    0,
 			expected: []int{2, 3},
 		},
 		{
 			name:     "удаление последнего элемента",
 			input:    []int{1, 2, 3, 4},
-			index:    4, // удаляем элемент с индексом 3
+			index:    3,
 			expected: []int{1, 2, 3},
 		},
 	}
@@ -142,13 +142,4 @@ func TestRemoveElement(t *testing.T) {
 			}
 		})
 	}
-}
-
-func TestRemoveElementEdgeCases(t *testing.T) {
-	defer func() {
-		if r := recover(); r == nil {
-			t.Errorf("removeElement должен паниковать при индексе 0")
-		}
-	}()
-	removeElement([]int{1, 2, 3}, 0)
 }
